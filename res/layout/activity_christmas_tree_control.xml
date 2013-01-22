@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="false"
+    android:orientation="vertical"
+    tools:context=".ChristmasTreeControl" 
+    >
+
+    <TextView
+        android:id="@+id/console"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:minHeight="200dp"
+        android:maxHeight="200dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true" 
+        >
+    </TextView>
+    
+    <EditText 
+        android:id="@+id/edtsend"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turn ON" 
+            />
+
+        <Button
+            android:id="@+id/btnoff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Turn OFF" 
+            />>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="center_horizontal"
+        >
+
+        <Button
+            android:id="@+id/btnclapon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enable mic" 
+            />
+
+        <Button
+            android:id="@+id/btnclapoff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disable mic" 
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="center_horizontal"
+        >
+
+        <Button
+            android:id="@+id/btnstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status" 
+            />
+
+        <Button
+            android:id="@+id/btnquit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exit" 
+            />
+    </LinearLayout>
+
+</LinearLayout>
