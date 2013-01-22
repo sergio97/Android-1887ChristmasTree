@@ -16,6 +16,10 @@ import java.util.regex.Pattern;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.text.method.ScrollingMovementMethod;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -90,6 +94,7 @@ public class ChristmasTreeControl extends Activity {
         
         /* Actual start-up code */
 		consoleView = (TextView) findViewById(R.id.console);
+		consoleView.setMovementMethod(new ScrollingMovementMethod());
 		
 		networkThread = new Thread(new Runnable() {
 			public void run() {
@@ -117,6 +122,16 @@ public class ChristmasTreeControl extends Activity {
 		});
 		networkThread.start();
 	}
+	
+	@Override
+	protected void onDestroy () {
+		try {
+			this.nsocket.close();
+		} catch (IOException e) {
+			//we really don't care
+		}
+		super.onDestroy();
+	}
 
 	/* disable menu */
 	@Override
@@ -126,17 +141,19 @@ public class ChristmasTreeControl extends Activity {
 
 	
 	/* All the good stuff is down here */
+	
+	
 	private void printToConsole(String str) {
 		if (this.consoleView != null) {
 			this.consoleView.setText(this.consoleView.getText() + "\n" + str);
 			// scroll to bottom
 			try {
-				int scrollAmount = this.consoleView.getLayout().getLineTop(this.consoleView.getLineCount())
-			            -this.consoleView.getHeight();
-				if(scrollAmount>0)
-					this.consoleView.scrollTo(0, scrollAmount);
-			}
-			catch (NullPointerException e) {
+				//this.consoleView.scrollTo(0, this.consoleView.getLineCount() * (this.consoleView.getLineHeight()/2));
+				int scrollDelta = consoleView.getLayout().getLineBottom(consoleView.getLineCount() - 1) 
+		                - consoleView.getScrollY() - consoleView.getHeight();
+		            if(scrollDelta > 0)
+		            	consoleView.scrollBy(0, scrollDelta);
+			} catch (NullPointerException e) {
 				// I just don't care
 			}
 		}
